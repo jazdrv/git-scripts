@@ -8,4 +8,14 @@ else
   branch="$1"
 fi
 
+#sync master first
+git checkout master
+git fetch origin master
+git reset --hard upstream/master
+git clean -fxd
+git push origin master
+
+#now publish
+git pull upstream/master 
+git rebase upstream/master
 git push upstream "env/$branch"
