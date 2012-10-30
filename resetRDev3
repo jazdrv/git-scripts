@@ -3,7 +3,7 @@
 #reset tracking and remote branches to master; dev3 is default
 
 if [ "$1" == "" ]; then
-  branch="env/dev3"
+  branch="dev3"
 else
   branch="$1"
 fi

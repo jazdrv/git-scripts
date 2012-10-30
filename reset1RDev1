@@ -3,7 +3,7 @@
 #reset tracking and remote branches to master; dev1 is default
 
 if [ "$1" == "" ]; then
-  branch="env/dev1"
+  branch="dev1"
 else
   branch="$1"
 fi
@@ -17,8 +17,8 @@ fi
 
 git checkout master
 git pull origin master
-git checkout "$branch"
-git fetch origin "$branch"
+git checkout "env/$branch"
+git fetch origin "env/$branch"
 git reset --hard master
 git clean -fxd
-git push origin "$branch"
+git push origin "env/$branch"
