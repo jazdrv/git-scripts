@@ -1,0 +1,11 @@
+#!/bin/sh -x
+
+#publish current branch to uat1 upstream
+
+if [ "$1" == "" ]; then
+  branch="uat1"
+else
+  branch="$1"
+fi
+
+git push upstream "env/$branch"
