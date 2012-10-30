@@ -17,10 +17,10 @@ fi
 
 git checkout master
 #delete remote branch
-git push origin :env/$branch
+git push origin :env/$branch 
 #recreate local branch from master
 git branch -D env/$branch
-git checkout -b env/$branch origin/master
+git branch --track env/$branch origin/master
 #clean orphans
 git clean -fxd
 #sync the remote branch

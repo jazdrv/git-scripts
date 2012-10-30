@@ -40,13 +40,24 @@ git checkout master
 git push origin :env/$branch
 #recreate local branch
 git branch -D env/$branch
-git checkout -b env/$branch upstream/env/$branch
+#git checkout -b env/$branch upstream/env/$branch
+git branch --track env/$branch upstream/env/$branch
 #clean orphans
 git clean -fxd
 #sync the remote branch
 git push origin env/$branch
 #reset the tracking branch to origin (if upstream)
 git branch --set-upstream env/$branch origin/env/$branch
+
+#git checkout env/$branch
+##fetch, not pull - in case there are conflicts
+#git fetch origin env/$branch
+##reset the what the upstream remote says
+#git reset --hard upstream/env/$branch
+##clean orphans
+#git clean -fxd
+##sync the remote branch
+#git push origin env/$branch
 
 done
 
