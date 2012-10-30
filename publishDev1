@@ -16,6 +16,6 @@ git clean -fxd
 git push origin master
 
 #now publish
-git pull upstream/master 
-git rebase upstream/master
+git checkout "env/$branch"
+git rebase master
 git push upstream "env/$branch"
