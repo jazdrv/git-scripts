@@ -8,14 +8,22 @@ else
   branch="$1"
 fi
 
+#discern main repo
+chkRepo=`git config --get remote.origin.url|grep Blinds|wc -l`
+if [ "$chkRepo" -eq "0" ]; then
+ repo = "origin"
+else
+ repo = "upstream"
+fi
+
 #sync master first
 git checkout master
 git fetch origin master
-git reset --hard upstream/master
+git reset --hard $repo/master
 git clean -fxd
 git push origin master
 
 #now publish
 git checkout "env/$branch"
 git rebase master
-git push upstream "env/$branch"
+git push $repo "env/$branch"
