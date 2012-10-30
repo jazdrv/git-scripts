@@ -1,0 +1,10 @@
+if [ "$1" == "" ];then
+echo "Missing new branch name."
+exit
+fi
+if [ "$2" == "" ];then
+echo "Missing source branch name."
+exit
+fi
+
+git checkout -b "$1" "$2"

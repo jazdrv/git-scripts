@@ -1,0 +1,47 @@
+#master
+echo "-----------------------------------------------------------"
+echo "MASTER SYNC"
+echo "-----------------------------------------------------------"
+echo ""
+git checkout master
+git pull --all
+echo ""
+
+#stage1
+echo "-----------------------------------------------------------"
+echo "STAGE1 SYNC"
+echo "-----------------------------------------------------------"
+echo ""
+git checkout env/stage1
+git pull --all
+echo ""
+
+#uat1
+echo "-----------------------------------------------------------"
+echo "UAT1 SYNC"
+echo "-----------------------------------------------------------"
+echo ""
+git checkout env/uat1
+git pull --all
+echo ""
+
+#dev1
+echo "-----------------------------------------------------------"
+echo "DEV1 SYNC"
+echo "-----------------------------------------------------------"
+echo ""
+git checkout env/dev1
+git pull --all
+echo ""
+
+#zakf
+echo "-----------------------------------------------------------"
+echo "ZAKF SYNC"
+echo "-----------------------------------------------------------"
+echo ""
+git checkout zakf
+#git rebase master
+#git rebase env/stage1
+#git rebase env/uat1
+git rebase env/dev1
+echo ""

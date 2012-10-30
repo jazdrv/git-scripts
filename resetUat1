@@ -1,0 +1,13 @@
+#!/bin/sh -x
+
+#git checkout master
+#git branch -D env/uat1
+#git checkout -b env/uat1 origin/env/uat1
+#git branch --track env/uat1 origin/env/uat1
+
+git pull 
+git checkout env/uat1
+git pull 
+git reset --hard origin/env/uat1
+git clean -f -x -d
+

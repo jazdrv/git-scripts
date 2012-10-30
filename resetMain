@@ -1,0 +1,24 @@
+#!/bin/sh -x
+
+echo "-------------------------------------"
+echo "reset Remote Tracking Branch: DEV1"
+echo "-------------------------------------"
+echo ""
+
+git pull 
+git checkout env/dev1
+git pull 
+git reset --hard origin/env/dev1
+git clean -f -x -d
+
+echo "-------------------------------------"
+echo "reset Remote Tracking Branch: UAT1"
+echo "-------------------------------------"
+echo ""
+
+git pull 
+git checkout env/uat1
+git pull 
+git reset --hard origin/env/uat1
+git clean -f -x -d
+

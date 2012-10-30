@@ -1,0 +1,10 @@
+if [ "$1" == "" ]; then
+
+git log --pretty=format:"%h - %an, %ar : %s" --graph 
+
+else
+
+git log --pretty=format:"%h - %an, %ar : %s" --graph --max-count=$1
+
+fi
+

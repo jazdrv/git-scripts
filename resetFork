@@ -1,0 +1,40 @@
+#!/bin/sh -x
+
+branches="$1"
+if [ "$branches" == "" ]; then
+  branches="dev1,dev3"
+fi
+
+#echo "-------------------------------------"
+#echo "reset Remote + Remote Tracking Branches: UAT1"
+#echo "-------------------------------------"
+#echo ""
+
+git pull 
+git checkout env/uat1
+git pull 
+git reset --hard upstream/env/uat1
+git clean -f -x -d
+git push origin env/uat1
+
+for branch in `echo $branches|sed -e 's/,/ /g'`; do
+
+#echo "-------------------------------------"
+#echo "reset Remote Branch: $branch"
+#echo "-------------------------------------"
+#echo ""
+
+git push origin env/$branch
+
+#echo "-------------------------------------"
+#echo "reset Remote Tracking Branch: $branch"
+#echo "-------------------------------------"
+#echo ""
+
+git pull 
+git checkout env/$branch
+git pull 
+git reset --hard origin/env/$branch
+git clean -f -x -d
+
+done

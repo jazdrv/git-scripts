@@ -1,0 +1,18 @@
+#!/bin/sh -x
+
+#delete remote branch
+
+if [ "$1" == "" ]; then
+  echo "Missing branch."
+  exit
+else
+ branch="$1"  	
+fi
+
+if [ "$2" == "" ]; then
+ repo="origin"  	
+else
+ repo="$2"  	
+fi
+
+git push "$repo" --delete "$branch"

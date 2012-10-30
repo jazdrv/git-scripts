@@ -1,0 +1,13 @@
+#!/bin/sh -x
+
+#git checkout master
+#git branch -D env/dev1
+#git checkout -b env/dev1 origin/env/dev1
+#git branch --track env/dev1 origin/env/dev1
+
+git pull 
+git checkout env/dev1
+git pull 
+git reset --hard origin/env/dev1
+git clean -f -x -d
+

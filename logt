@@ -1,0 +1,10 @@
+if [ "$1" == "" ]; then
+
+git log --graph --pretty=oneline --decorate=full
+
+else
+
+git log --graph --pretty=oneline --max-count=$1 --decorate=full
+
+fi
+

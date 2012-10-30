@@ -1,0 +1,17 @@
+#zakf
+echo "-----------------------------------------------------------"
+echo "ZAKF CHECKOUT+COMMIT"
+echo "-----------------------------------------------------------"
+echo ""
+git checkout zakf
+commit
+#dev1
+echo "-----------------------------------------------------------"
+echo "DEV1 SYNC"
+echo "-----------------------------------------------------------"
+echo ""
+git checkout env/dev1
+git pull --all
+git rebase zakf
+commit
+

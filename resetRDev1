@@ -1,0 +1,9 @@
+#!/bin/sh -x
+
+git checkout env/uat1
+git pull 
+git checkout env/dev1
+git pull 
+git reset --hard origin/env/uat1
+git clean -f -x -d
+git push origin env/dev1

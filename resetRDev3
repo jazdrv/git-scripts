@@ -1,0 +1,5 @@
+#!/bin/sh -x
+
+#git checkout -b env/dev3 env/uat1
+git checkout env/dev3
+git push origin env/dev3

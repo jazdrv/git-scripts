@@ -1,0 +1,3 @@
+echo ""
+git for-each-ref --format="%(taggerdate): %(refname)" --sort=-taggerdate --count=10 refs/tags
+

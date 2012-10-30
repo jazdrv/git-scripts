@@ -1,0 +1,2 @@
+#stash untracked files
+git stash -u
