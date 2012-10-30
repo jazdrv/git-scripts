@@ -1,8 +1,9 @@
 #!/bin/sh -x
 
-#reset env/dev to specified branch or remote dev3 if not specified
+#reset branch to the remote version specified or remote dev3 if not specified
+
 if [ "$1" == "" ]; then
-  branch="origin/env/dev3"
+  branch="env/dev3"
 else
   branch="$1"
 fi
@@ -13,9 +14,9 @@ fi
 #git branch --track env/dev1 origin/env/dev1
 
 git checkout master
-git pull --all
-git checkout env/dev3
-git fetch
-git reset --hard "$branch"
+git pull origin master
+git checkout "$branch"
+git fetch origin "$branch"
+git reset --hard master
 git clean -fxd
-
+git push origin "$branch"
