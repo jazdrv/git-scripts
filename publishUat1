@@ -11,9 +11,9 @@ fi
 #discern main repo
 chkRepo=`git config --get remote.origin.url|grep Blinds|wc -l`
 if [ "$chkRepo" -eq "0" ]; then
- repo = "origin"
+ repo="origin"
 else
- repo = "upstream"
+ repo="upstream"
 fi
 
 #sync master first
