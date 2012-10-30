@@ -2,39 +2,46 @@
 
 branches="$1"
 if [ "$branches" == "" ]; then
-  branches="dev1,dev3"
+  branches=""
+else
+  branches="$1"
 fi
 
+#master#{{{
+
 #echo "-------------------------------------"
-#echo "reset Remote + Remote Tracking Branches: UAT1"
+#echo "reset Remote + Remote Tracking Branches: master"
 #echo "-------------------------------------"
 #echo ""
 
-git pull 
-git checkout env/uat1
-git pull 
-git reset --hard upstream/env/uat1
-git clean -f -x -d
-git push origin env/uat1
+git checkout master
+git fetch origin master
+git reset --hard upstream/master
+git clean -fxd
+git push origin master
+
+#master}}}
+#branches#{{{
+
+if [ "$branches" != "" ];then
 
 for branch in `echo $branches|sed -e 's/,/ /g'`; do
 
 #echo "-------------------------------------"
-#echo "reset Remote Branch: $branch"
+#echo "reset Remote + Remote Tracking Branches: $branch"
 #echo "-------------------------------------"
 #echo ""
 
-git push origin env/$branch
-
-#echo "-------------------------------------"
-#echo "reset Remote Tracking Branch: $branch"
-#echo "-------------------------------------"
-#echo ""
-
-git pull 
 git checkout env/$branch
-git pull 
-git reset --hard origin/env/$branch
-git clean -f -x -d
+git fetch origin env/$branch
+git reset --hard upstream/env/$branch
+git clean -fxd
+git push origin env/$branch
+#git reset --hard origin/env/$branch
 
 done
+
+fi
+
+#branches#}}}
+
