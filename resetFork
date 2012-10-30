@@ -1,5 +1,8 @@
 #!/bin/sh -x
 
+#reset your fork branch to the upstream versions
+#defaults to just master, but can include other branches
+
 branches="$1"
 if [ "$branches" == "" ]; then
   branches=""
