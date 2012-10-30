@@ -1,0 +1,25 @@
+#!/bin/sh -x
+
+#reset tracking and remote branches to master; dev3 is default
+
+if [ "$1" == "" ]; then
+  branch="env/dev3"
+else
+  branch="$1"
+fi
+
+#beg: old stuff
+#git checkout master
+#git branch -D env/dev1
+#git checkout -b env/dev1 origin/env/dev1
+#git branch --track env/dev1 origin/env/dev1
+#end: old stuff
+
+git checkout master
+git pull origin master
+git checkout "$branch"
+git rebase master
+git fetch origin "$branch"
+git reset --hard master
+git clean -fxd
+git push origin "$branch"
