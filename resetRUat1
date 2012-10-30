@@ -16,9 +16,15 @@ fi
 #end: old stuff
 
 git checkout master
-git pull origin master
-git checkout "$branch"
-git fetch origin "$branch"
-git reset --hard master
+#delete remote branch
+git push origin :env/$branch
+#recreate local branch from master
+git branch -D env/$branch
+git checkout -b env/$branch origin/master
+#clean orphans
 git clean -fxd
-git push origin "$branch"
+#sync the remote branch
+git push origin env/$branch
+#reset the tracking branch to origin/env
+git branch --set-upstream env/$branch origin/env/$branch
+
