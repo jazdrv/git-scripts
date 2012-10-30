@@ -3,7 +3,27 @@
 branches="$1"
 if [ "$branches" == "" ]; then
   branches="uat1,dev1,dev3"
+else
+  branches="$1"
 fi
+
+#master#{{{
+
+#echo "-------------------------------------"
+#echo "reset Remote + Remote Tracking Branches: master"
+#echo "-------------------------------------"
+#echo ""
+
+git checkout master
+git fetch origin master
+git reset --hard upstream/master
+git clean -fxd
+git push origin master
+
+#master}}}
+#branches#{{{
+
+if [ "$branches" != "" ];then
 
 for branch in `echo $branches|sed -e 's/,/ /g'`; do
 
@@ -20,3 +40,8 @@ git push origin env/$branch
 #git reset --hard origin/env/$branch
 
 done
+
+fi
+
+#branches#}}}
+
