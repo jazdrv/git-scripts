@@ -1,1 +1,6 @@
-git pull --all
+#!/bin/sh -x
+
+#current branch
+currBranch=`git rev-parse --abbrev-ref HEAD`
+
+git pull origin "$currBranch"
