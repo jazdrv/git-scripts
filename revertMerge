@@ -1,0 +1,4 @@
+#!/bin/sh
+
+git revert -m1 $i
+

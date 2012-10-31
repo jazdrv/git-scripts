@@ -1,0 +1,6 @@
+#!/bin/sh
+
+for i in `echo "$1"|sed -e 's/,/ /g'`; do
+ git revert $i
+done
+
