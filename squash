@@ -10,14 +10,31 @@ if [ "$FB" == "" ]; then
   exit
 fi
 
+#discern main repo
+chkRepo=`git config --get remote.origin.url|grep Blinds|wc -l`
+if [ "$chkRepo" -eq "0" ]; then
+ repo="origin"
+else
+ repo="upstream"
+fi
+
 #master#{{{
 
 git checkout master
-git fetch origin master
-git reset --hard upstream/master
-git clean -fxd
-git push origin master
-git merge upstream/master
+
+if [ "$repo" == "origin" ]; then
+  #not a fork env
+  echo "not a fork env"
+  git pull origin master
+else
+  #a fork env
+  echo "fork env"
+  git fetch origin master
+  git reset --hard upstream/master
+  git clean -fxd
+  git push origin master
+  git merge upstream/master
+fi
 
 SHA=`git log --pretty=format:"%h - %an, %ar : %s" --max-count=1|cut -d' ' -f1`
 
