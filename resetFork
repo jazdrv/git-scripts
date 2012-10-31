@@ -22,6 +22,7 @@ git fetch origin master
 git reset --hard upstream/master
 git clean -fxd
 git push origin master
+git merge upstream/master
 
 #master}}}
 #branches#{{{
@@ -40,6 +41,8 @@ git checkout master
 git push origin :env/$branch
 #recreate local branch
 git branch -D env/$branch
+#config
+git branch --set-upstream env/$branch upstream/env/$branch
 #git checkout -b env/$branch upstream/env/$branch
 git branch --track env/$branch upstream/env/$branch
 #checkout branch
@@ -53,6 +56,8 @@ git push origin env/$branch
 #reset the tracking branch to origin (if upstream)
 git branch --set-upstream env/$branch origin/env/$branch
 #sync the remote branch (again)
+#this is the missing bit
+git merge upstream/env/$branch
 git push origin env/$branch
 
 #git checkout env/$branch

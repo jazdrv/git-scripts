@@ -22,6 +22,7 @@ git fetch origin master
 git reset --hard upstream/master
 git clean -fxd
 git push origin master
+git merge upstream/master
 
 #master}}}
 #branches#{{{
@@ -43,6 +44,7 @@ git reset --hard upstream/env/$branch
 #clean orphans
 git clean -fxd
 #sync the remote branch
+git merge upstream/env/$branch
 git push origin env/$branch
 
 done
