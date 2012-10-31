@@ -3,4 +3,4 @@
 #current branch
 currBranch=`git rev-parse --abbrev-ref HEAD`
 
-git pull --rebase origin "$currBranch"
+git push --force origin "$currBranch"
