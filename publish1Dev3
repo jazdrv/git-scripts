@@ -29,5 +29,5 @@ git push origin master
 #now publish
 git checkout "$currBranch"
 git rebase master
-git push $repo "env/$branch"
+git push --force $repo "env/$branch"
 
