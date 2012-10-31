@@ -1,6 +1,7 @@
 #!/bin/sh -x
 
 #squash merge into a tracking branch
+#TODO: realize now that getting/using the sha of master's head not needed for doing squash interactive ... can instead be called like: git rebase -i master
 
 SQ="Squash"
 
