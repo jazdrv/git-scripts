@@ -21,4 +21,5 @@ git checkout "env/$branch"
 git fetch origin "env/$branch"
 git reset --hard master
 git clean -fxd
+git merge origin/master
 git push origin "env/$branch"

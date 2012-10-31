@@ -24,6 +24,7 @@ git branch --track env/$branch origin/master
 #clean orphans
 git clean -fxd
 #sync the remote branch
+git merge origin/master
 git push origin env/$branch
 #reset the tracking branch to origin/env
 git branch --set-upstream env/$branch origin/env/$branch
