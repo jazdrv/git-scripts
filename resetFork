@@ -42,12 +42,18 @@ git push origin :env/$branch
 git branch -D env/$branch
 #git checkout -b env/$branch upstream/env/$branch
 git branch --track env/$branch upstream/env/$branch
+#checkout branch
+git checkout env/$branch
 #clean orphans
 git clean -fxd
-#sync the remote branch
+#commit
+git commit -a
+#recreate,sync the remote branch
 git push origin env/$branch
 #reset the tracking branch to origin (if upstream)
 git branch --set-upstream env/$branch origin/env/$branch
+#sync the remote branch (again)
+git push origin env/$branch
 
 #git checkout env/$branch
 ##fetch, not pull - in case there are conflicts
