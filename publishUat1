@@ -8,6 +8,9 @@ else
   branch="$1"
 fi
 
+#current branch
+currBranch=`git rev-parse --abbrev-ref HEAD`
+
 #discern main repo
 chkRepo=`git config --get remote.origin.url|grep Blinds|wc -l`
 if [ "$chkRepo" -eq "0" ]; then
@@ -24,6 +27,6 @@ git clean -fxd
 git push origin master
 
 #now publish
-git checkout "env/$branch"
+git checkout "$currBranch"
 git rebase master
 git push $repo "env/$branch"
