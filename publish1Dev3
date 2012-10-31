@@ -1,9 +1,9 @@
 #!/bin/sh -x
 
-#publish current branch to uat1 upstream
+#publish current branch to dev3 upstream
 
 if [ "$1" == "" ]; then
-  branch="uat1"
+  branch="dev3"
 else
   branch="$1"
 fi
@@ -26,12 +26,8 @@ git reset --hard $repo/master
 git clean -fxd
 git push origin master
 
-#update tracking branch + publish
-git checkout "env/$branch"
-git rebase master
-git merge --no-ff $currBranch
-git push origin "env/$branch"
-
 #now publish
+git checkout "$currBranch"
+git rebase master
 git push $repo "env/$branch"
 

@@ -26,12 +26,7 @@ git reset --hard $repo/master
 git clean -fxd
 git push origin master
 
-#update tracking branch + publish
-git checkout "env/$branch"
-git rebase master
-git merge --no-ff $currBranch
-git push origin "env/$branch"
-
 #now publish
+git checkout "$currBranch"
+git rebase master
 git push $repo "env/$branch"
-
