@@ -58,7 +58,7 @@ git branch --set-upstream env/$branch origin/env/$branch
 #sync the remote branch (again)
 #this is the missing bit
 git merge upstream/env/$branch
-git push origin env/$branch
+git push --force origin env/$branch
 
 #git checkout env/$branch
 ##fetch, not pull - in case there are conflicts
@@ -68,7 +68,7 @@ git push origin env/$branch
 ##clean orphans
 #git clean -fxd
 ##sync the remote branch
-#git push origin env/$branch
+#git push --force origin env/$branch
 
 done
 
