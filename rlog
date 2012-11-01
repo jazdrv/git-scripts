@@ -1,9 +1,10 @@
 #!/bin/sh
 
-if [ "$1" == "" ]; then
 
 #current branch
 currBranch=`git rev-parse --abbrev-ref HEAD`
+
+if [ "$1" == "" ]; then
 
 git fetch origin "$currBranch"
 
