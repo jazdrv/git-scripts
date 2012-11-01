@@ -1,0 +1,9 @@
+#!/bin/sh -x
+
+#reset current branch to master
+
+#current branch
+currBranch=`git rev-parse --abbrev-ref HEAD`
+
+git reset --hard master
+

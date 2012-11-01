@@ -1,0 +1,6 @@
+if [ "$@" == "" ]; then
+ echo "Missing SHA info."
+ exit
+fi
+
+git cherry-pick $@
