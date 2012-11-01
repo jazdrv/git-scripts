@@ -1,0 +1,93 @@
+#!/bin/sh -x
+
+#squash merge into a tracking branch
+#TODO: realize now that getting/using the sha of master's head not needed for doing squash interactive ... can instead be called like: git rebase -i master
+
+SQ="Squash"
+
+FB="$1"
+if [ "$FB" == "" ]; then
+  echo "Missing Feature Branch."
+  exit
+fi
+
+TB="$2"
+if [ "$TB" == "" ]; then
+  echo "Missing Tracking Branch."
+  exit
+fi
+
+#discern main repo
+chkRepo=`git config --get remote.origin.url|grep Blinds|wc -l`
+if [ "$chkRepo" -eq "0" ]; then
+ repo="upstream"
+else
+ repo="origin"
+fi
+
+#master#{{{
+
+git checkout master
+
+if [ "$repo" == "origin" ]; then
+  #not a fork env
+  echo "not a fork env"
+  git pull origin master
+else
+  #a fork env
+  echo "fork env"
+  git fetch origin master
+  git reset --hard upstream/master
+  git clean -fxd
+  git push origin master
+  git merge upstream/master
+fi
+
+SHA=`git log --pretty=format:"%h - %an, %ar : %s" --max-count=1|cut -d' ' -f1`
+
+#master#}}}
+#feature branch#{{{
+
+git checkout $FB
+git rebase master
+
+#CNT=`git log \
+#  --pretty=format:"%h - %an, %ar : %s" \
+#  --max-count=1000|grep -n "$SHA"|cut -d':' -f1`
+
+#feature branch#}}}
+#squash#{{{
+
+#beg: old#{{{
+#git checkout -b $FB$SQ master
+##in case already created
+#git checkout $FB$SQ
+#git reset --hard master
+#git clean -fxd
+##do the squash
+##git rebase -i $FB $SHA..
+#git rebase -i $FB HEAD~$CNT
+#end: old#}}}
+
+git checkout -b $FB$SQ master
+#in case already created
+git checkout $FB$SQ
+git reset --hard master
+git clean -fxd
+git merge --no-ff $FB
+#do the squash
+git rebase -i $SHA
+#git rebase -i HEAD~$CNT
+
+SHA=`git log --pretty=format:"%h - %an, %ar : %s" --max-count=1|cut -d' ' -f1`
+
+#squash#}}}
+#dest tracking branch/*{{{*/
+
+git checkout "env/$TB"
+git rebase master 
+git cherry-pick $SHA
+
+#dest tracking branch/*}}}*/
+
+
