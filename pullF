@@ -1,0 +1,11 @@
+#!/bin/sh -x
+
+#this resets your tracking branch to exactly what it is on remote
+
+#current branch
+currBranch=`git rev-parse --abbrev-ref HEAD`
+
+git fetch origin "$currBranch"
+git reset --hard HEAD origin/$currBranch 
+git clean -fxd
+
