@@ -9,8 +9,7 @@ git log --pretty=format:"%h - %an, %ar : %s" --graph "origin/$currBranch"
 
 else
 
-git log --pretty=format:"%h - %an, %ar : %s" --graph --max-count=$1
-"origin/$currBranch"
+git log --pretty=format:"%h - %an, %ar : %s" --graph --max-count=$1 "origin/$currBranch"
 
 fi
 
