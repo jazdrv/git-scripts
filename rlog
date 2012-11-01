@@ -3,12 +3,14 @@ if [ "$1" == "" ]; then
 #current branch
 currBranch=`git rev-parse --abbrev-ref HEAD`
 
-git log --pretty=format:"%h - %an, %ar : %s" --graph "$currBranch"
+git fetch origin "$currBranch"
+
+git log --pretty=format:"%h - %an, %ar : %s" --graph "origin/$currBranch"
 
 else
 
 git log --pretty=format:"%h - %an, %ar : %s" --graph --max-count=$1
-"$currBranch"
+"origin/$currBranch"
 
 fi
 
