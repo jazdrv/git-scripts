@@ -4,15 +4,29 @@
 #current branch
 currBranch=`git rev-parse --abbrev-ref HEAD`
 
+if [ "$1" != "" ]; then
+  cnt="$1"
+fi
+if [ "$2" == "" ]; then
+  repo="origin" 
+else
+  repo="$2" 
+fi
+if [ "$3" == "" ]; then
+  branch="$currBranch"
+else
+  branch="$3"
+fi
+
 if [ "$1" == "" ]; then
 
-git fetch origin "$currBranch"
+git fetch $2 $3
 
-git log --pretty=format:"%h - %an, %ar : %s" --graph "origin/$currBranch"
+git log --pretty=format:"%h - %an, %ar : %s" --graph "$repo/$branch"
 
 else
 
-git log --pretty=format:"%h - %an, %ar : %s" --graph --max-count=$1 "origin/$currBranch"
+git log --pretty=format:"%h - %an, %ar : %s" --graph --max-count=$cnt "$repo/$branch"
 
 fi
 
