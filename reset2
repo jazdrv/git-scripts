@@ -1,6 +1,6 @@
 #!/bin/sh -x
 
-#reset current branch to master
+#this resets your tracking branch to exactly what it is on remote
 
 if [ "$1" == "" ]; then
  echo "Missing repo."
@@ -14,8 +14,7 @@ fi
 #current branch
 currBranch=`git rev-parse --abbrev-ref HEAD`
 
-git checkout "$currBranch"
-git fetch "$1" "$2"
-git reset --hard "$1" "$2"
+git fetch $1 "$2"
+git reset --hard HEAD $1/$2 
 git clean -fxd
 
