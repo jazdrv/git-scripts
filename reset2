@@ -1,0 +1,21 @@
+#!/bin/sh -x
+
+#reset current branch to master
+
+if [ "$1" == "" ]; then
+ echo "Missing repo."
+ exit
+fi
+if [ "$2" == "" ]; then
+ echo "Missing branch."
+ exit
+fi
+
+#current branch
+currBranch=`git rev-parse --abbrev-ref HEAD`
+
+git checkout "$currBranch"
+git fetch "$1" "$2"
+git reset --hard "$1" "$2"
+git clean -fxd
+
