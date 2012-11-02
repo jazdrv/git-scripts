@@ -1,1 +1,1 @@
-git co $@
+git checkout $@
