@@ -18,3 +18,5 @@ git fetch $1 "$2"
 git reset --hard HEAD $1/$2 
 git clean -fxd
 
+git checkout "$currBranch"
+
