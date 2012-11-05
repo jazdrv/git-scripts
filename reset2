@@ -1,6 +1,6 @@
 #!/bin/sh -x
 
-#this resets your tracking branch to exactly what it is on local branch or an explicit sha
+#this resets your tracking branch to exactly what it is on local branch
 
 if [ "$1" == "" ]; then
  echo "Missing branch."
