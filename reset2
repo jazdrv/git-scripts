@@ -8,10 +8,7 @@ if [ "$1" == "" ]; then
 fi
 
 #current branch
-currBranch=`git rev-parse --abbrev-ref HEAD`
 
-#git fetch $1 "$2"
 git reset --hard HEAD $1
 
-git checkout "$currBranch"
 
