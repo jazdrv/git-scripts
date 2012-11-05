@@ -1,0 +1,14 @@
+#!/bin/sh -x
+
+#this resets this branch's head to a sha
+
+if [ "$1" == "" ]; then
+ echo "Missing branch."
+ exit
+fi
+
+#current branch
+
+git reset --hard $1
+
+
