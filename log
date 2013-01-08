@@ -10,7 +10,8 @@ fi
 
 if [ "$1" == "" ]; then
 
-git log --pretty=format:"%h - %an, %ar : %s" --graph "$branch"
+git log --pretty=format:"%h - %an, %ar : %s" --graph --max-count=5
+#git log --pretty=format:"%h - %an, %ar : %s" --graph "$branch"
 
 else
 
