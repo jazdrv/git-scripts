@@ -22,7 +22,7 @@ git fetch "$repo" "$branch"
 
 if [ "$cnt" == "" ]; then
 
-git log --pretty=format:"%h - %an, %ar : %s" --graph "$repo/$branch"
+git log --pretty=format:"%h - %an, %ar : %s" --graph "$repo/$branch" --max-count=15
 
 else
 
