@@ -1,5 +1,5 @@
 #!/bin/sh -x
 
-git pull --rebase origin master
 currBranch=`git rev-parse --abbrev-ref HEAD`
 git pull --rebase origin "$currBranch"
+git pull --rebase origin master
