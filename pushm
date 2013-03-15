@@ -2,3 +2,4 @@
 
 currBranch=`git rev-parse --abbrev-ref HEAD`
 git push origin "$currBranch"
+git push origin master
