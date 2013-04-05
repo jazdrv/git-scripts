@@ -1,0 +1,23 @@
+#!/bin/bash
+
+
+#branch
+FILE="$1"
+
+if [ "$3" == "" ]; then
+    branch=`git rev-parse --abbrev-ref HEAD`
+else
+    branch="$2"
+fi
+
+if [ "$2" == "" ]; then
+
+git log --pretty=format:"%h - %an, %ar : %s" --graph --max-count=15 $FILE
+#git log --pretty=format:"%h - %an, %ar : %s" --graph "$branch"
+
+else
+
+git log --pretty=format:"%h - %an, %ar : %s" --graph --max-count=$2 "$branch" "$FILE"
+
+fi
+
