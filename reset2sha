@@ -1,4 +1,4 @@
-#!/bin/sh -x
+#!/bin/bash -x
 
 #this resets this branch's head to a sha
 
