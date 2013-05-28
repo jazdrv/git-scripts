@@ -18,6 +18,8 @@ else
   branch="$3"
 fi
 
+echo "$repo:$branch"
+
 git fetch "$repo" "$branch"
 
 if [ "$cnt" == "" ]; then
