@@ -1,0 +1,4 @@
+#!/bin/sh
+
+git config --global user.name "Zak Jones"
+git config --global user.email jazdrv@gmail.com

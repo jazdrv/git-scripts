@@ -1,0 +1,7 @@
+#!/bin/sh -x
+
+currBranch=`git rev-parse --abbrev-ref HEAD`
+git pull --rebase origin "$currBranch"
+git add --all .
+git commit -a -m 'upd'
+git push origin "$currBranch"
